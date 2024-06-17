@@ -1,6 +1,4 @@
-
-
-const PORT=4000;
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const multer = require("multer");
@@ -11,15 +9,18 @@ const jwt = require("jsonwebtoken");
 
 const app = express();
 
+const PORT = process.env.PORT || 4000;
+const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
+
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/ecommerce", {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-const uploadDir = "./upload/images";
+const uploadDir = process.env.UPLOAD_DIR;
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
@@ -27,10 +28,7 @@ if (!fs.existsSync(uploadDir)) {
 const storage = multer.diskStorage({
   destination: uploadDir,
   filename: (req, file, cb) => {
-    cb(
-      null,
-      `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
-    );
+    cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
   },
 });
 
@@ -41,7 +39,7 @@ app.use("/images", express.static(uploadDir));
 app.post("/upload", upload.single("image"), (req, res) => {
   res.json({
     success: 1,
-    image_url: `http://localhost:${PORT}/images/${req.file.filename}`,
+    image_url: `${BASE_URL}/images/${req.file.filename}`,
   });
 });
 
@@ -70,67 +68,65 @@ const User = mongoose.model("User", {
 });
 
 app.post("/signup", async (req, res) => {
-  let check = await User.findOne({ email: req.body.email });
+  const { name, email, password } = req.body;
+  let check = await User.findOne({ email });
 
   if (check) {
     return res.status(400).json({
       success: false,
-      errors: "existing user found with the same email id",
+      errors: "Existing user found with the same email id",
     });
   }
 
-  const user = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    cartData: [],
-  });
-
+  const user = new User({ name, email, password, cartData: [] });
   await user.save();
 
   const data = { user: { id: user.id } };
-  const token = jwt.sign(data, "secret_ecom");
+  const token = jwt.sign(data, process.env.JWT_SECRET);
   res.json({ success: true, token });
 });
 
 app.post("/login", async (req, res) => {
-  let user = await User.findOne({ email: req.body.email });
+  const { email, password } = req.body;
+  let user = await User.findOne({ email });
 
   if (user) {
-    const passcompare = req.body.password === user.password;
+    const passcompare = password === user.password;
 
     if (passcompare) {
       const data = { user: { id: user.id } };
-      const token = jwt.sign(data, "secret_ecom");
+      const token = jwt.sign(data, process.env.JWT_SECRET);
       res.json({ success: true, token });
     } else {
-      res.json({ success: false, error: "wrong password" });
+      res.json({ success: false, error: "Wrong password" });
     }
   } else {
-    res.json({ success: false, error: "wrong user id" });
+    res.json({ success: false, error: "Wrong user ID" });
   }
 });
 
 app.post("/addproduct", async (req, res) => {
+  const { name, image, category, new_price, old_price } = req.body;
   let id = (await Product.countDocuments()) + 1;
 
   const product = new Product({
     id,
-    name: req.body.name,
-    image: req.body.image,
-    category: req.body.category,
-    new_price: req.body.new_price,
-    old_price: req.body.old_price,
+    name,
+    image,
+    category,
+    new_price,
+    old_price,
   });
 
   await product.save();
 
-  res.json({ success: true, name: req.body.name });
+  res.json({ success: true, name });
 });
 
 app.post("/removeproduct", async (req, res) => {
-  await Product.findOneAndDelete({ id: req.body.id });
-  res.json({ success: true, name: req.body.name });
+  const { id } = req.body;
+  await Product.findOneAndDelete({ id });
+  res.json({ success: true });
 });
 
 app.get("/allproduct", async (req, res) => {
@@ -152,15 +148,15 @@ const fetchUser = async (req, res, next) => {
   const token = req.header("auth-token");
 
   if (!token) {
-    return res.status(401).send({ errors: "invalid authorization" });
+    return res.status(401).send({ errors: "Invalid authorization" });
   }
 
   try {
-    const data = jwt.verify(token, "secret_ecom");
+    const data = jwt.verify(token, process.env.JWT_SECRET);
     req.user = data.user;
     next();
   } catch (error) {
-    res.status(401).send({ errors: "invalid authorization" });
+    res.status(401).send({ errors: "Invalid authorization" });
   }
 };
 
