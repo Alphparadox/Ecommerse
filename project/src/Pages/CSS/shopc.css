@@ -1,0 +1,133 @@
+.shop-banner {
+    display: block;
+    margin: 30px auto;
+    width: 97%;
+    border: 1px solid #607d8b; 
+ }
+
+ 
+ 
+ .shop-categorysort {
+     display: flex;
+     padding: 10px 20px;
+     border-radius: 40px;
+     border: 1px solid #607d8b; 
+     gap: 5px;
+    
+     color: #eceff1; 
+ }
+ 
+ .shop-category-indexSort {
+     width: 97%;
+     display: flex;
+     margin: 0px auto;
+     justify-content: space-between;
+     color: #eceff1; 
+ }
+ 
+ .shop-category-indexSort p span {
+     font-weight: 600;
+     color: #eceff1; 
+ }
+ 
+ .shopcategory-products {
+     padding-left: 30px;
+     display: grid;
+     margin: 20px 20px;
+     grid-template-columns: 1fr 1fr 1fr 1fr;
+     row-gap: 30px;
+     align-items: center;
+     justify-content: center;
+     /* background: linear-gradient(180deg, #37474f, #455a64); */
+     color: #eceff1; 
+ }
+ 
+ .loadmore {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin: 100px auto;
+     width: 233px;
+     border-radius: 75px;
+     height: 69px;
+     background: #607d8b; /* Background color for better contrast */
+     color: #eceff1; /* Light text color */
+     font-size: 18px;
+     font-weight: 500;
+     border: 1px solid #78909c; /* Border to complement the dark gradient */
+ }
+ 
+ @media (max-width: 1280px) {
+     .shop-banner {
+         margin: 20px auto;
+         width: 90%;
+     }
+ 
+     .shop-category-indexSort {
+         width: 90%;
+     }
+ 
+     .shop-categorysort {
+         padding: 5px 10px;
+         font-size: 12px;
+     }
+ 
+     .shop-category-indexSort p {
+         font-size: 12px;
+     }
+ 
+     .shopcategory-products {
+         width: 90%;
+         margin: 10px auto;
+         row-gap: 40px;
+     }
+ 
+     .shopcategory-products .item {
+         margin: auto;
+     }
+ 
+     .loadmore {
+         margin: 100px auto;
+         width: 200px;
+         height: 60px;
+         font-size: 16px;
+     }
+ }
+ 
+ @media (max-width: 800px) {
+     .shop-banner {
+         width: 95%;
+     }
+ 
+     .shopcategory-products {
+         width: 95%;
+         grid-template-columns: 1fr 1fr;
+     }
+ 
+     .loadmore {
+         margin: 60px auto;
+         width: 150px;
+         height: 40px;
+         font-size: 13px;
+     }
+ }
+ 
+
+ @media (max-width: 400px) {
+    .shop-banner {
+        width: 95%;
+    }
+
+    .shopcategory-products {
+        width: 95%;
+        grid-template-columns: 1fr;
+    }
+
+    .loadmore {
+        margin: 60px auto;
+        width: 150px;
+        height: 40px;
+        font-size: 13px;
+    }
+}
+

@@ -1,0 +1,47 @@
+.breadcrum {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #eceff1; /* Light color for contrast with dark background */
+    font-size: 16px;
+    font-weight: 600;
+    margin: 60px 170px; /* Default margin */
+    text-transform: capitalize;
+}
+
+.breadcrum a{
+    color:white;
+    text-decoration: none;
+}
+
+@media (max-width: 1280px) {
+    .breadcrum {
+        color: #eceff1; /* Light color for contrast with dark background */
+        margin: 30px 50px; /* Adjusted margin for smaller screens */
+        font-size: 14px; /* Adjusted font size */
+    }
+}
+
+@media (max-width: 1024px) {
+    .breadcrum {
+        color: #eceff1; /* Light color for contrast with dark background */
+        margin: 30px 30px; /* Further adjusted margin */
+        font-size: 13px; /* Further adjusted font size */
+    }
+}
+
+@media (max-width: 800px) {
+    .breadcrum {
+        color: #eceff1; /* Light color for contrast with dark background */
+        margin: 30px 10px; /* Margin adjusted for smaller screens */
+        font-size: 12px; /* Font size adjusted */
+    }
+}
+
+@media (max-width: 500px) {
+    .breadcrum {
+        color: #eceff1; /* Light color for contrast with dark background */
+        margin: 20px 5px; /* Adjusted margin for smallest screens */
+        font-size: 11px; /* Font size further adjusted */
+    }
+}
