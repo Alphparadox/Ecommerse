@@ -31,7 +31,7 @@ export default function Navbar() {
             <NavLink to="/Men">Men</NavLink>
           </li>
           <li>
-            <NavLink to="/Women">anil</NavLink>
+            <NavLink to="/Women">women</NavLink>
           </li>
           <li>
             <NavLink to="/Kids">Kids</NavLink>
