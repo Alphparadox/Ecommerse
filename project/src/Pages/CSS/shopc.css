@@ -97,6 +97,7 @@
  @media (max-width: 800px) {
      .shop-banner {
          width: 95%;
+         margin-top:80px;
      }
  
      .shopcategory-products {

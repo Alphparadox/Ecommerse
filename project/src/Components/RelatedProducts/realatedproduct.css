@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     gap:10px;
-    height: 50vh;
+    height: 80vh;
     margin-top: 50px;
 
 }
@@ -56,7 +56,7 @@
 
 @media (max-width:1024px){
     .relatedproduct{
-        height: 40vh;
+        height: 60vh;
 
     }
 
@@ -82,7 +82,7 @@
 
 @media (max-width:800px){
     .relatedproduct{
-        height: 66vh;
+        height: 80vh;
         gap:6px;
         margin-bottom: 100px;
 
@@ -106,7 +106,7 @@
     .relatedproduct{
         gap:6px;
         margin-bottom: 50px;
-        height: 60vh;
+        height: 80vh;
 
     }
 
@@ -114,6 +114,25 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap:20px;
+
+    }
+
+    
+    
+}
+
+
+@media (max-width:400px){
+    .relatedproduct{
+       
+        height: 150vh;
+
+    }
+
+    .relatedproduct-item{
+ 
+        grid-template-columns: 1fr;
+       
 
     }
 

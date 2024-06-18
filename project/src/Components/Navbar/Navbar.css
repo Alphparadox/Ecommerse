@@ -206,6 +206,13 @@
 
 @media (max-width:500px){
 
+    .navbar ul{
+        padding-left:0px;
+        gap:15px;
+    }
+
+
+
 .navbar{
     padding:8px 0px;
     gap:0px;

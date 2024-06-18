@@ -120,7 +120,7 @@
 @media (max-width: 800px) {
     .newsletter {
         padding: 0px;
-        margin-top: 300px;
+        margin-top: 50px;
         width: 100%;
     }
 
@@ -176,5 +176,14 @@
     .newsletter input {
         width: 130px;
         font-size: 13px;
+    }
+}
+
+@media (max-width:400px){
+    .newcollection {
+        height: 300vh;
+        gap: 6px;
+        margin-bottom: 50px;
+
     }
 }

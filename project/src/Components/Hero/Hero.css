@@ -123,7 +123,7 @@
 
 @media (max-width: 800px) {
     .hero {
-        height: 50vh;
+        height: 90vh;
     }
 
     .hero-left {
@@ -156,7 +156,7 @@
 @media (max-width: 500px) {
     .hero {
         flex-direction: column;
-        height: 50vh;
+        height: 70vh;
     }
 
     .hero-right {

@@ -71,7 +71,7 @@
 
 @media (max-width: 800px) {
     .popular {
-        height: 50vh;
+        height: 60vh;
         gap: 6px;
     }
 
@@ -90,7 +90,7 @@
 
 @media (max-width: 800px) {
     .popular {
-        height: 60vh;
+        height: 100vh;
         gap: 6px;
         margin-bottom: 100px;
     }
@@ -113,6 +113,22 @@
     .popular-item {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+
+
+@media (max-width: 400px) {
+    .popular {
+        gap: 6px;
+        margin-bottom: 50px;
+        height: 160vh;
+    }
+
+    .popular-item {
+        display: grid;
+        grid-template-columns: 1fr;
         gap: 20px;
     }
 }
