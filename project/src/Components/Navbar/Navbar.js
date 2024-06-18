@@ -39,8 +39,8 @@ export default function Navbar() {
         </ul>
 
         <div className="login">
-          {localStorage.getItem('auto-token')?<button onClick={()=>{
-            localStorage.removeItem('auto-token');window.location.replace('/')}
+          {localStorage.getItem('auth-token')?<button onClick={()=>{
+            localStorage.removeItem('auth-token');window.location.replace('/')}
           }>Logout</button>:<NavLink to="/login"><button>Login</button></NavLink>}
           
           <NavLink to="/cart"><img src={cart_icon} /></NavLink>

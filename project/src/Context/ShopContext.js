@@ -23,13 +23,14 @@ const ShopContextProvider = (props) => {
           },
         });
         const data = await response.json();
-        setCartItem(data);
+        setCartItem(Array.isArray(data) ? data : []);
       }
     };
     fetchCart();
   }, []);
 
   const getTotalAmount = () => {
+    if (!Array.isArray(cartItem)) return 0;
     return cartItem.reduce((total, item) => {
       const itemInfo = all_product.find((product) => product.id === item.id);
       return total + itemInfo.new_price * item.quantity;
@@ -37,6 +38,7 @@ const ShopContextProvider = (props) => {
   };
 
   const getTotalItem = () => {
+    if (!Array.isArray(cartItem)) return 0;
     return cartItem.reduce((total, item) => total + item.quantity, 0);
   };
 
