@@ -74,6 +74,7 @@
 @media (max-width: 800px) {
     .footer {
         gap: 20px;
+        height:318px;
     }
 
     .footer-logo {

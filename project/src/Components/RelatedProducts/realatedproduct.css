@@ -56,7 +56,7 @@
 
 @media (max-width:1024px){
     .relatedproduct{
-        height: 60vh;
+        height: 400px;
 
     }
 
@@ -82,9 +82,10 @@
 
 @media (max-width:800px){
     .relatedproduct{
-        height: 80vh;
+     
         gap:6px;
         margin-bottom: 100px;
+        height: 600px;
 
 
     }
@@ -106,7 +107,7 @@
     .relatedproduct{
         gap:6px;
         margin-bottom: 50px;
-        height: 80vh;
+        
 
     }
 
@@ -125,7 +126,7 @@
 @media (max-width:400px){
     .relatedproduct{
        
-        height: 150vh;
+       height: 1000px;
 
     }
 

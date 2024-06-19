@@ -9,7 +9,7 @@ export default function ProductDisplay(props) {
   const { product } = props;
   const { addToCart } = useContext(ShopContext);
 
-  const [selectedSize, setSelectedSize] = useState("S");
+  const [selectedSize, setSelectedSize] = useState("");
 
   const handleAddToCart = (event) => {
     event.preventDefault(); // Prevent default action if necessary

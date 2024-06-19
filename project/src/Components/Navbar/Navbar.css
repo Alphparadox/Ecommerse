@@ -58,6 +58,7 @@
     align-items: center;
 }
 
+
 .login button {
     width: 157px;
     height: 57px;
@@ -90,6 +91,7 @@
 
 .nav-dropdown{
     visibility: hidden;
+    color:black;
 }
 @media (max-width:1280px)
 {

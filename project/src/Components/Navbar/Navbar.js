@@ -4,8 +4,10 @@ import logo from "../Assets/logo.png";
 import cart_icon from "../Assets/cart_icon.png";
 import { NavLink } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-import drop_down from '../Assets/dropdown_icon.png';
+
 export default function Navbar() {
   const {getTotalItem}=useContext(ShopContext);
   const menuRef = useRef();
@@ -22,7 +24,8 @@ export default function Navbar() {
           <img src={logo} alt="" />
           <p>SUNDHA</p>
         </div>
-        <img onClick={dropdown_toggle}  className='nav-dropdown' src={drop_down} alt="" />
+        {/* <img onClick={dropdown_toggle}  className='nav-dropdown' src={drop_down} alt="" /> */}
+        <FontAwesomeIcon icon={faChevronDown} onClick={dropdown_toggle} className="nav-dropdown" />
         <ul ref={menuRef} className="nav-menu">
           <li>
             <NavLink to="/">Shop</NavLink>
@@ -43,7 +46,7 @@ export default function Navbar() {
             localStorage.removeItem('auth-token');window.location.replace('/')}
           }>Logout</button>:<NavLink to="/login"><button>Login</button></NavLink>}
           
-          <NavLink to="/cart"><img src={cart_icon} /></NavLink>
+          <NavLink to="/cart"><img src={cart_icon} alt=""/></NavLink>
           <div className="count">{getTotalItem()}</div>
         </div>
       </div>

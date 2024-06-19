@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import all_product from "../Components/Assets/all_product";
+import { BASE_URL } from "../anil";
 
 export const ShopContext = createContext(null);
 
@@ -14,7 +15,7 @@ const ShopContextProvider = (props) => {
     const fetchCart = async () => {
       const token = localStorage.getItem("auth-token");
       if (token) {
-        const response = await fetch("http://localhost:4000/getcart", {
+        const response = await fetch(`${BASE_URL}/getcart`, {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -64,7 +65,7 @@ const ShopContextProvider = (props) => {
         ]);
       }
 
-      const response = await fetch("http://localhost:4000/addtocart", {
+      const response = await fetch(`${BASE_URL}/addtocart`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -75,6 +76,13 @@ const ShopContextProvider = (props) => {
       });
       const data = await response.json();
       console.log(data);
+
+       alert("product added successfuly")
+      
+    }
+
+    else{
+      alert("please first do login")
     }
   };
 
@@ -100,7 +108,7 @@ const ShopContextProvider = (props) => {
           );
         }
 
-        const response = await fetch("http://localhost:4000/remove", {
+        const response = await fetch(`${BASE_URL}/remove`, {
           method: "POST",
           headers: {
             Accept: "application/json",
